@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * Implements hook_views_plugins().
+ */
+
+function views_file_row_views_plugins() {
+  return array(
+    'module' => 'views', // This just tells our themes are elsewhere.
+    'row' => array(
+      'file' => array(
+        'title' => t('Content'),
+        'help' => t('Display the content with standard file view.'),
+        'handler' => 'views_plugin_file_view',
+        //'path' => drupal_get_path('module', 'views') . '/modules/term', // not necessary for most modules
+        'theme path' => drupal_get_path('module', 'views_file_row'), // not necessary for most modules
+        'theme' => 'views_view_row_file',
+        'base' => array('file_managed'), // only works with 'file' as base.
+        'uses options' => TRUE,
+        'type' => 'normal',
+        //'help topic' => 'style-term',
+      ),
+    ),
+  );
+}
+
